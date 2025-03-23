@@ -1,6 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface AuthSlice {
+	isAuthenticated: boolean;
+	user: {
+		email: string;
+		name: string;
+		id: number;
+		role: string;
+	} | null;
+	loading: boolean;
+	error: string | null;
+	data: {
+		email: string;
+		name: string;
+		id: number;
+		role: string;
+	} | {};
+	status: "idle" | "loading" | "succeeded" | "failed";
+	userInfo: {
+		email: string;
+		name: string;
+		id: number | null;
+		role: string;
+	} | null;
+}
+
+const initialState: AuthSlice = {
 	isAuthenticated: false,
 	user: null,
 	loading: false,
@@ -44,9 +69,6 @@ const authSlice = createSlice({
 			state.data = {};
 			state.user = null;
 		},
-		logout(state) {
-			return initialState;
-		},
 		updateUserInfo(state, { payload }) {
 			state.userInfo = {
 				...state.userInfo,
@@ -68,7 +90,7 @@ export const {
 	loginStart,
 	loginSuccess,
 	loginFailure,
-	logout,
 	updateUserInfo,
 } = authSlice.actions;
+
 export default authSlice.reducer;
