@@ -13,7 +13,7 @@ interface CatsGridWithFiltrationProps {
   cats: CatModel[]
 }
 
-const CatsGridWithFiltration = ({ cats }: CatsGridWithFiltrationProps) => {
+const CatsGridWithFiltration: React.FC<CatsGridWithFiltrationProps> = ({ cats }) => {
   const [filteredCats, setFilteredCats] = useState<CatModel[]>(cats)
   const [sortOption, setSortOption] = useState<SortOption>({ 
     label: 'No sorting', 

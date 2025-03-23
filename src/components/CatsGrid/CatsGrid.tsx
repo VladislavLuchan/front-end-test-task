@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { CatModel } from '../../services/catsService'
 
 interface CatsGridProps {
   cats: CatModel[]
 }
-
 
 const CatsGrid: React.FC<CatsGridProps> = ({ cats }) => {
   return (  
